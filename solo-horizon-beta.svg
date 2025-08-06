@@ -1,0 +1,115 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pelican riding a bicycle">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b9e6ff"/>
+      <stop offset="100%" stop-color="#e9f7ff"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#79b8ff"/>
+      <stop offset="100%" stop-color="#4ea1ff"/>
+    </linearGradient>
+    <radialGradient id="sunGrad" cx="50%" cy="20%" r="20%">
+      <stop offset="0%" stop-color="#fff8b3" />
+      <stop offset="100%" stop-color="#ffd44d" />
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset dx="0" dy="2" result="offset"/>
+      <feMerge>
+        <feMergeNode in="offset"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#skyGrad)"/>
+  <circle cx="420" cy="90" r="50" fill="url(#sunGrad)" opacity="0.9"/>
+
+  <rect x="0" y="350" width="512" height="70" fill="url(#seaGrad)" opacity="0.6"/>
+  <rect x="0" y="420" width="512" height="92" fill="#e1d7c6"/>
+  <path d="M0 445 C 120 465, 220 430, 512 455 L 512 512 L 0 512 Z" fill="#d1c5b0"/>
+
+  <g id="bike" transform="translate(120,250) scale(1.0)" filter="url(#shadow)">
+    <circle cx="40" cy="150" r="52" fill="none" stroke="#1c1c1c" stroke-width="6"/>
+    <circle cx="40" cy="150" r="46" fill="none" stroke="#6c6c6c" stroke-width="2" stroke-dasharray="4 8"/>
+    <circle cx="260" cy="150" r="52" fill="none" stroke="#1c1c1c" stroke-width="6"/>
+    <circle cx="260" cy="150" r="46" fill="none" stroke="#6c6c6c" stroke-width="2" stroke-dasharray="4 8"/>
+
+    <line x1="40" y1="150" x2="140" y2="110" stroke="#2f5aa6" stroke-width="6"/>
+    <line x1="260" y1="150" x2="170" y2="110" stroke="#2f5aa6" stroke-width="6"/>
+    <line x1="140" y1="110" x2="170" y2="110" stroke="#2f5aa6" stroke-width="6"/>
+    <line x1="140" y1="110" x2="100" y2="150" stroke="#2f5aa6" stroke-width="6"/>
+    <line x1="170" y1="110" x2="210" y2="150" stroke="#2f5aa6" stroke-width="6"/>
+
+    <circle cx="140" cy="110" r="6" fill="#1c1c1c"/>
+    <circle cx="170" cy="110" r="6" fill="#1c1c1c"/>
+
+    <line x1="170" y1="110" x2="220" y2="60" stroke="#1c1c1c" stroke-width="6"/>
+    <line x1="220" y1="60" x2="250" y2="60" stroke="#1c1c1c" stroke-width="6"/>
+
+    <line x1="140" y1="110" x2="120" y2="70" stroke="#1c1c1c" stroke-width="6"/>
+    <rect x="108" y="60" width="24" height="8" rx="3" fill="#1c1c1c"/>
+
+    <circle cx="100" cy="150" r="10" fill="#1c1c1c"/>
+    <line x1="100" y1="150" x2="120" y2="170" stroke="#1c1c1c" stroke-width="6"/>
+    <line x1="100" y1="150" x2="80" y2="170" stroke="#1c1c1c" stroke-width="6"/>
+    <rect x="72" y="168" width="14" height="6" rx="2" fill="#2f5aa6"/>
+    <rect x="118" y="168" width="14" height="6" rx="2" fill="#2f5aa6"/>
+  </g>
+
+  <g id="pelican" transform="translate(150,130)" filter="url(#shadow)">
+    <ellipse cx="90" cy="110" rx="55" ry="40" fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+    <ellipse cx="150" cy="90" rx="45" ry="35" fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 183 88 C 210 82, 228 82, 245 94 C 250 97, 250 106, 245 110 C 227 123, 206 127, 187 122 Z"
+          fill="#f6a623" stroke="#cc7e00" stroke-width="2"/>
+    <path d="M 187 122 C 210 130, 232 130, 246 121 C 252 117, 252 109, 246 106 C 232 97, 210 97, 185 104 Z"
+          fill="#ffa92e" stroke="#cc7e00" stroke-width="2"/>
+
+    <circle cx="165" cy="78" r="8" fill="#1c1c1c"/>
+    <circle cx="163" cy="76" r="2" fill="#ffffff" opacity="0.8"/>
+
+    <path d="M 65 115 C 40 130, 15 155, 5 175 C 0 185, 10 192, 22 185 C 38 176, 60 150, 82 132 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 120 145 C 122 162, 118 182, 112 195 C 108 204, 118 210, 126 204 C 141 192, 147 165, 145 145 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 118 200 C 110 208, 90 218, 78 223 C 70 226, 66 236, 77 238 C 92 241, 123 228, 136 218 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 142 206 C 150 214, 170 224, 182 229 C 190 232, 194 242, 183 244 C 168 247, 137 234, 124 224 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 92 160 C 80 172, 72 188, 70 198 C 68 206, 74 210, 81 205 C 92 198, 102 180, 106 168 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 152 160 C 166 172, 176 188, 178 198 C 180 206, 174 210, 167 205 C 156 198, 146 180, 142 168 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+
+    <path d="M 90 115 C 110 100, 140 98, 160 105" fill="none" stroke="#9e9e9e" stroke-width="3" stroke-linecap="round"/>
+
+    <ellipse cx="125" cy="242" rx="20" ry="10" fill="#5a5a5a" opacity="0.35"/>
+
+    <path d="M 110 205 C 96 202, 78 202, 65 206 C 60 208, 58 214, 64 216 C 77 219, 98 216, 112 215"
+          fill="none" stroke="#1c1c1c" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 145 205 C 159 202, 177 202, 190 206 C 195 208, 197 214, 191 216 C 178 219, 157 216, 143 215"
+          fill="none" stroke="#1c1c1c" stroke-width="6" stroke-linecap="round"/>
+
+    <path d="M 95 128 C 85 120, 78 108, 76 100 C 74 92, 84 90, 90 98 C 94 104, 100 114, 106 121 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+    <path d="M 155 128 C 165 120, 172 108, 174 100 C 176 92, 166 90, 160 98 C 156 104, 150 114, 144 121 Z"
+          fill="#f2f2f2" stroke="#c9c9c9" stroke-width="2"/>
+  </g>
+
+  <g opacity="0.2" stroke="#ffffff" stroke-width="2">
+    <path d="M30 100 C 80 90, 120 110, 170 100" fill="none"/>
+    <path d="M60 140 C 120 130, 180 150, 240 140" fill="none"/>
+    <path d="M200 80 C 260 70, 320 90, 380 80" fill="none"/>
+  </g>
+
+  <g opacity="0.25" fill="#000000">
+    <ellipse cx="160" cy="462" rx="70" ry="12"/>
+    <ellipse cx="380" cy="468" rx="55" ry="10"/>
+  </g>
+</svg>

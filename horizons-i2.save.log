@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/thomas/.local/share/../bin/llm", line 5, in <module>
+    from llm.cli import cli
+  File "/home/thomas/.local/share/uv/tools/llm/lib/python3.11/site-packages/llm/__init__.py", line 6, in <module>
+    from .models import (
+  File "/home/thomas/.local/share/uv/tools/llm/lib/python3.11/site-packages/llm/models.py", line 27, in <module>
+    from .utils import (
+  File "/home/thomas/.local/share/uv/tools/llm/lib/python3.11/site-packages/llm/utils.py", line 9, in <module>
+    import sqlite_utils
+  File "/home/thomas/.local/share/uv/tools/llm/lib/python3.11/site-packages/sqlite_utils/__init__.py", line 4, in <module>
+    from .db import Database
+  File "/home/thomas/.local/share/uv/tools/llm/lib/python3.11/site-packages/sqlite_utils/db.py", line 82, in <module>
+    Column = namedtuple(
+             ^^^^^^^^^^^
+  File "/home/thomas/.local/share/uv/python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/collections/__init__.py", line 436, in namedtuple
+    __new__ = eval(code, namespace)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 0, in <module>
+KeyboardInterrupt

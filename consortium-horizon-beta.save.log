@@ -1,0 +1,2 @@
+Consortium configuration 'consortium-horizon-beta-n3' saved.
+You can now use it like: llm -m consortium-horizon-beta-n3 "Your prompt here"
