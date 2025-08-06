@@ -1,169 +1,139 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="640" height="480" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pelican riding a bicycle">
-  <title>Pelican Riding a Bicycle</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Pelican riding a bicycle">
   <defs>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#bfe7ff"/>
-      <stop offset="100%" stop-color="#eef8ff"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfe9ff"/>
+      <stop offset="100%" stop-color="#f9fdff"/>
     </linearGradient>
-    <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffd86e"/>
-      <stop offset="100%" stop-color="#ffa34d"/>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7e7e7e"/>
+      <stop offset="100%" stop-color="#606060"/>
     </linearGradient>
-    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#9fd3f3"/>
-      <stop offset="100%" stop-color="#6bb3e6"/>
+    <radialGradient id="tireShade" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#333"/>
+      <stop offset="100%" stop-color="#111"/>
+    </radialGradient>
+    <radialGradient id="hub" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fefefe"/>
+      <stop offset="100%" stop-color="#cfcfcf"/>
+    </radialGradient>
+    <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#35aef3"/>
+      <stop offset="100%" stop-color="#1e86cf"/>
     </linearGradient>
-    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6d7b86"/>
-      <stop offset="100%" stop-color="#9aa6ae"/>
-    </linearGradient>
-    <linearGradient id="tire" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1f1f1f"/>
-      <stop offset="100%" stop-color="#3a3a3a"/>
+    <linearGradient id="feather" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e9f0f7"/>
     </linearGradient>
     <linearGradient id="beakGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#f3b23c"/>
-      <stop offset="100%" stop-color="#f6c25f"/>
+      <stop offset="0%" stop-color="#ffcc33"/>
+      <stop offset="100%" stop-color="#ff9d00"/>
     </linearGradient>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
-    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect x="0" y="0" width="640" height="480" fill="url(#bgGrad)"/>
-  <circle cx="560" cy="80" r="42" fill="url(#sunGrad)" opacity="0.9"/>
+  <rect width="100%" height="100%" fill="url(#sky)"/>
+  <rect y="470" width="100%" height="130" fill="url(#road)"/>
+  <line x1="0" y1="470" x2="800" y2="470" stroke="#555" stroke-width="2" opacity="0.5"/>
 
-  <!-- Horizon and water -->
-  <rect x="0" y="360" width="640" height="120" fill="url(#seaGrad)"/>
-  <rect x="0" y="340" width="640" height="28" fill="#cfe0ea"/>
-
-  <!-- Subtle clouds -->
-  <g fill="#ffffff" opacity="0.9">
-    <ellipse cx="100" cy="90" rx="42" ry="22"/>
-    <ellipse cx="130" cy="92" rx="28" ry="16"/>
-    <ellipse cx="75" cy="94" rx="22" ry="12"/>
-
-    <ellipse cx="420" cy="120" rx="40" ry="20"/>
-    <ellipse cx="450" cy="122" rx="26" ry="16"/>
-    <ellipse cx="395" cy="123" rx="20" ry="12"/>
-  </g>
-
-  <!-- Scene group -->
-  <g transform="translate(70,30)">
-
-    <!-- Bicycle -->
-    <g id="bike" filter="url(#shadow)">
-      <!-- wheels -->
-      <g transform="translate(140,300)">
-        <circle r="58" fill="none" stroke="url(#tire)" stroke-width="10"/>
-        <circle r="42" fill="#e9eef2" stroke="#90a4ae" stroke-width="4"/>
-        <!-- spokes -->
-        <g stroke="#9aa3ae" stroke-width="2">
-          <line x1="0" y1="0" x2="42" y2="0"/>
-          <line x1="0" y1="0" x2="-42" y2="0"/>
-          <line x1="0" y1="0" x2="0" y2="42"/>
-          <line x1="0" y1="0" x2="0" y2="-42"/>
-          <line x1="0" y1="0" x2="29.7" y2="29.7"/>
-          <line x1="0" y1="0" x2="-29.7" y2="29.7"/>
-          <line x1="0" y1="0" x2="29.7" y2="-29.7"/>
-          <line x1="0" y1="0" x2="-29.7" y2="-29.7"/>
-        </g>
-      </g>
-
-      <g transform="translate(350,300)">
-        <circle r="58" fill="none" stroke="url(#tire)" stroke-width="10"/>
-        <circle r="42" fill="#e9eef2" stroke="#90a4ae" stroke-width="4"/>
-        <g stroke="#9aa3ae" stroke-width="2">
-          <line x1="0" y1="0" x2="42" y2="0"/>
-          <line x1="0" y1="0" x2="-42" y2="0"/>
-          <line x1="0" y1="0" x2="0" y2="42"/>
-          <line x1="0" y1="0" x2="0" y2="-42"/>
-          <line x1="0" y1="0" x2="29.7" y2="29.7"/>
-          <line x1="0" y1="0" x2="-29.7" y2="29.7"/>
-          <line x1="0" y1="0" x2="29.7" y2="-29.7"/>
-          <line x1="0" y1="0" x2="-29.7" y2="-29.7"/>
-        </g>
-      </g>
-
-      <!-- frame -->
-      <g stroke="url(#steel)" stroke-width="10" fill="none" stroke-linecap="round">
-        <path d="M140 300 L230 230 L290 230 L350 300"/>
-        <path d="M230 230 L260 180"/>
-        <circle cx="230" cy="230" r="7" fill="#607d8b"/>
-        <circle cx="290" cy="230" r="7" fill="#607d8b"/>
-
-        <!-- fork and handlebar stem -->
-        <path d="M260 180 L290 150" stroke="#444" stroke-width="8"/>
-        <!-- seat stay / chain stay hints -->
-        <path d="M230 230 L198 260" stroke="#444" stroke-width="8"/>
-      </g>
-
-      <!-- handlebar -->
-      <rect x="276" y="140" width="40" height="12" rx="6" fill="#222"/>
-      <rect x="282" y="150" width="28" height="60" rx="8" fill="#333"/>
-
-      <!-- crankset and pedals -->
-      <g transform="translate(230,230)">
-        <circle r="10" fill="#455a64"/>
-        <path d="M0 0 L20 25" stroke="#455a64" stroke-width="8" stroke-linecap="round"/>
-        <path d="M0 0 L-22 -26" stroke="#455a64" stroke-width="8" stroke-linecap="round"/>
-        <rect x="20" y="25" width="16" height="6" rx="2" fill="#2f3441"/>
-        <rect x="-38" y="-32" width="16" height="6" rx="2" fill="#2f3441"/>
-      </g>
-    </g>
-
-    <!-- Pelican -->
-    <g id="pelican" transform="translate(170,60)" filter="url(#shadow)">
-      <!-- body -->
-      <ellipse cx="70" cy="160" rx="72" ry="55" fill="#f2f5f8" stroke="#d9e1e7" stroke-width="3"/>
-      <ellipse cx="70" cy="142" rx="60" ry="40" fill="#eef3f7" opacity="0.9"/>
-
-      <!-- head and eye -->
-      <g transform="translate(60,85)">
-        <ellipse cx="0" cy="0" rx="40" ry="35" fill="#f5f7f9" stroke="#d9e1e7" stroke-width="3"/>
-        <circle cx="10" cy="-5" r="6" fill="#263238"/>
-        <circle cx="9.5" cy="-5.5" r="2" fill="#ffffff" opacity="0.9"/>
-        <path d="M-20 -20 Q10 -35 40 -18" fill="none" stroke="#cfd8dc" stroke-width="4" stroke-linecap="round"/>
-      </g>
-
-      <!-- beak -->
-      <g transform="translate(110,90)">
-        <path d="M0 0 C 28 -10, 68 10, 90 30 C 70 40, 40 50, 0 52 Z" fill="url(#beakGrad)" stroke="#d89022" stroke-width="3"/>
-        <path d="M0 0 C 28 -10, 68 10, 90 30" fill="none" stroke="#e59a28" stroke-width="4" stroke-linecap="round"/>
-        <path d="M0 52 C 40 50, 70 40, 90 30" fill="none" stroke="#eab75b" stroke-width="3" opacity="0.8"/>
-      </g>
-
-      <!-- wings -->
-      <path d="M80 150 Q100 190 130 210" fill="none" stroke="#e0e7ee" stroke-width="14" stroke-linecap="round"/>
-      <path d="M60 150 Q40 190 5 215" fill="none" stroke="#e0e7ee" stroke-width="14" stroke-linecap="round"/>
-
-      <!-- feet on pedals -->
-      <g transform="translate(135,210) rotate(12)">
-        <path d="M0 0 C 20 -10, 40 -10, 56 0 C 40 14, 20 14, 0 0 Z" fill="#f0c15b" stroke="#d6a446" stroke-width="3"/>
-        <rect x="50" y="-10" width="14" height="24" rx="6" fill="#222"/>
-      </g>
-      <g transform="translate(0,220) rotate(-12)">
-        <path d="M0 0 C 20 -10, 40 -10, 56 0 C 40 14, 20 14, 0 0 Z" fill="#f0c15b" stroke="#d6a446" stroke-width="3"/>
-        <rect x="-10" y="-10" width="14" height="24" rx="6" fill="#222"/>
-      </g>
-
-      <!-- wing detail -->
-      <g transform="translate(30,120)">
-        <path d="M0 0 C 40 20, 80 20, 120 0 C 100 40, 60 60, 20 40 Z" fill="#eaf1f6" stroke="#d9e1e7" stroke-width="3"/>
-        <path d="M10 8 C 45 22, 75 22, 110 8" fill="none" stroke="#cfd8dc" stroke-width="3" opacity="0.8"/>
-      </g>
+  <!-- Rear wheel -->
+  <g transform="translate(290,470)">
+    <circle r="68" fill="url(#tireShade)"/>
+    <circle r="56" fill="#202020" stroke="#444" stroke-width="2"/>
+    <circle r="50" fill="#1a1a1a"/>
+    <circle r="6" fill="url(#hub)" stroke="#aaa" stroke-width="1"/>
+    <g stroke="#cfd4d8" stroke-width="2">
+      <line x1="0" y1="0" x2="0" y2="-50"/>
+      <line x1="0" y1="0" x2="43.3" y2="-25"/>
+      <line x1="0" y1="0" x2="50" y2="0"/>
+      <line x1="0" y1="0" x2="43.3" y2="25"/>
+      <line x1="0" y1="0" x2="0" y2="50"/>
+      <line x1="0" y1="0" x2="-43.3" y2="25"/>
+      <line x1="0" y1="0" x2="-50" y2="0"/>
+      <line x1="0" y1="0" x2="-43.3" y2="-25"/>
     </g>
   </g>
 
-  <!-- Ground shadow -->
-  <ellipse cx="300" cy="372" rx="130" ry="16" fill="#000" opacity="0.15"/>
-
-  <!-- Light wind hints -->
-  <g opacity="0.25" stroke="#ffffff" stroke-width="2" fill="none">
-    <path d="M30 70 q40 -20 80 0" />
-    <path d="M110 110 q50 -20 100 0" />
-    <path d="M440 130 q40 -16 80 0" />
+  <!-- Front wheel -->
+  <g transform="translate(510,470)">
+    <circle r="68" fill="url(#tireShade)"/>
+    <circle r="56" fill="#202020" stroke="#444" stroke-width="2"/>
+    <circle r="50" fill="#1a1a1a"/>
+    <circle r="6" fill="url(#hub)" stroke="#aaa" stroke-width="1"/>
+    <g stroke="#cfd4d8" stroke-width="2">
+      <line x1="0" y1="0" x2="0" y2="-50"/>
+      <line x1="0" y1="0" x2="43.3" y2="-25"/>
+      <line x1="0" y1="0" x2="50" y2="0"/>
+      <line x1="0" y1="0" x2="43.3" y2="25"/>
+      <line x1="0" y1="0" x2="0" y2="50"/>
+      <line x1="0" y1="0" x2="-43.3" y2="25"/>
+      <line x1="0" y1="0" x2="-50" y2="0"/>
+      <line x1="0" y1="0" x2="-43.3" y2="-25"/>
+    </g>
   </g>
+
+  <!-- Bike frame -->
+  <g>
+    <path d="M300 410 L360 340 L470 360 L505 415" fill="none" stroke="url(#frameGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="360" y1="340" x2="410" y2="420" stroke="url(#frameGrad)" stroke-width="12" stroke-linecap="round"/>
+    <line x1="300" y1="410" x2="410" y2="420" stroke="url(#frameGrad)" stroke-width="12" stroke-linecap="round"/>
+    <line x1="410" y1="420" x2="505" y2="415" stroke="url(#frameGrad)" stroke-width="12" stroke-linecap="round"/>
+    <!-- seat tube and seat -->
+    <line x1="360" y1="340" x2="350" y2="300" stroke="url(#frameGrad)" stroke-width="10" stroke-linecap="round"/>
+    <rect x="325" y="285" width="60" height="18" rx="9" fill="#2b2b2b"/>
+    <!-- handlebars and fork -->
+    <line x1="505" y1="415" x2="520" y2="340" stroke="url(#frameGrad)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M520 340 q30 -20 70 -10" fill="none" stroke="#2b2b2b" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="590" cy="328" r="7" fill="#2b2b2b"/>
+    <!-- pedals and crank -->
+    <circle cx="410" cy="420" r="18" fill="#cfd4d8" stroke="#9aa3a8" stroke-width="3"/>
+    <line x1="410" y1="420" x2="435" y2="400" stroke="#9aa3a8" stroke-width="6" stroke-linecap="round"/>
+    <line x1="410" y1="420" x2="388" y2="444" stroke="#9aa3a8" stroke-width="6" stroke-linecap="round"/>
+    <rect x="433" y="394" width="22" height="8" rx="3" fill="#2b2b2b"/>
+    <rect x="368" y="444" width="22" height="8" rx="3" fill="#2b2b2b" transform="rotate(-40 379 448)"/>
+    <!-- chain -->
+    <path d="M410 420 C 450 420, 470 415, 505 415" fill="none" stroke="#60656a" stroke-width="4"/>
+    <path d="M410 420 C 450 430, 470 425, 505 425" fill="none" stroke="#60656a" stroke-width="4"/>
+  </g>
+
+  <!-- Pelican -->
+  <g transform="translate(0,-10)">
+    <!-- body -->
+    <ellipse cx="360" cy="340" rx="85" ry="55" fill="url(#feather)" stroke="#d9d9d9" stroke-width="3"/>
+    <!-- wing -->
+    <path d="M315 330 q-40 30 -25 65 q50 10 110 -5 q-30 -35 -85 -60z" fill="#f4f7fb" stroke="#cfd8e3" stroke-width="2"/>
+    <!-- tail -->
+    <path d="M275 342 q-35 18 -48 12 q25 -25 55 -35" fill="#e9f0f7" stroke="#c6c6c6" stroke-width="2"/>
+    <!-- neck -->
+    <path d="M395 325 q40 -40 80 -35 q-25 30 -10 65 q-50 5 -70 -30z" fill="url(#feather)" stroke="#d9d9d9" stroke-width="3"/>
+    <!-- head -->
+    <circle cx="470" cy="305" r="28" fill="#ffffff" stroke="#cfd8e3" stroke-width="2"/>
+    <!-- eye -->
+    <circle cx="478" cy="300" r="5" fill="#1c1c1c"/>
+    <circle cx="476.5" cy="299" r="2" fill="#ffffff" opacity="0.85"/>
+    <!-- beak upper -->
+    <path d="M488 310 c 40 0 70 15 90 18 c -30 10 -75 10 -105 0 z" fill="url(#beakGrad)" stroke="#d98900" stroke-width="3"/>
+    <!-- pouch lower -->
+    <path d="M485 312 c 48 20 58 40 5 45 c -22 2 -45 -5 -50 -18 c -3 -10 15 -19 45 -27z" fill="#ffb133" stroke="#d98900" stroke-width="3" opacity="0.95"/>
+    <!-- legs -->
+    <g fill="#ffb133" stroke="#cf9031" stroke-width="4" stroke-linecap="round">
+      <path d="M345 380 q-10 40 -8 70" />
+      <path d="M380 382 q5 40 10 72" />
+    </g>
+    <!-- feet on pedals -->
+    <g fill="#ffb133" stroke="#cf9031" stroke-width="3">
+      <path d="M365 452 q18 6 28 -2 q-10 16 -30 18 q-14 2 -20 -4 q8 -8 22 -12z" />
+      <path d="M438 394 q20 2 25 -8 q-2 14 -20 20 q-10 3 -18 0 q5 -8 13 -12z" />
+    </g>
+    <!-- subtle belly shading -->
+    <ellipse cx="360" cy="350" rx="65" ry="35" fill="#000" opacity="0.06"/>
+  </g>
+
+  <!-- motion lines -->
+  <g stroke="#7abbe6" stroke-width="4" stroke-linecap="round" opacity="0.5">
+    <line x1="210" y1="460" x2="250" y2="460"/>
+    <line x1="200" y1="440" x2="245" y2="440"/>
+    <line x1="220" y1="420" x2="260" y2="420"/>
+  </g>
+
+  <!-- shadow -->
+  <ellipse cx="400" cy="490" rx="170" ry="20" fill="#000" opacity="0.15"/>
 </svg>
