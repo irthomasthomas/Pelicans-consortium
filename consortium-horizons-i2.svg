@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="640" height="480" viewBox="0 0 640 480"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-labelledby="title desc"
+  data-animated="false"
+  data-background="none"
+  data-theme="auto"          <!-- auto | light | dark -->
+  data-variant="default"     <!-- default | light -->
+>
+  <title id="title">Pelican Riding a Bicycle</title>
+  <desc id="desc">A stylized pelican riding a bicycle, with optional animation, background, and dark mode. A lightweight flat-color variant is available.</desc>
+
+  <style>
+    /* Base palette (light) */
+    :root {
+      --sky-top: #cbe8ff;
+      --sky-bottom: #f5fbff;
+      --ground-top: #9a9a9a;
+      --ground-bottom: #787878;
+
+      --bike-frame: #2f8efc;
+      --bike-frame-dark: #0b5bd3;
+      --wheel-rim: #0d0d0d;
+      --wheel-hub: #c9c9c9;
+      --spokes: #cfcfcf;
+
+      --pelican-body: #e7eef3;
+      --pelican-body-light: #f3f8fb;
+      --pelican-outline: #cbd6df;
+      --beak: #ffb142;
+      --beak-edge: #d8791a;
+      --leg: #eaa11f;
+      --leg-edge: #b87312;
+      --seat: #202020;
+      --metal: #dcdcdc;
+      --shadow: rgba(0,0,0,0.15);
+
+      --bg-sky: url(#skyGrad);
+      --bg-road: url(#roadGrad);
+      --frame-stroke: url(#frameGrad);
+    }
+
+    /* Theme: dark */
+    [data-theme="dark"] {
+      --sky-top: #0e1a24;
+      --sky-bottom: #0a131a;
+      --ground-top: #3c3c3c;
+      --ground-bottom: #2b2b2b;
+
+      --bike-frame: #7ab0ff;
+      --bike-frame-dark: #3a78e6;
+      --wheel-rim: #e7e7e7;
+      --wheel-hub: #a8a8a8;
+      --spokes: #b9c3cc;
+
+      --pelican-body: #cfd8df;
+      --pelican-body-light: #e5ecf1;
+      --pelican-outline: #9fb0bc;
+      --beak: #ffb142;
+      --beak-edge: #d27a1e;
+      --leg: #e6a526;
+      --leg-edge: #ad7420;
+      --seat: #e5e5e5;
+      --metal: #cfd4d8;
+      --shadow: rgba(0,0,0,0.35);
+    }
+
+    /* Auto theme via prefers-color-scheme */
+    @media (prefers-color-scheme: dark) {
+      [data-theme="auto"] {
+        --sky-top: #0e1a24;
+        --sky-bottom: #0a131a;
+        --ground-top: #3c3c3c;
+        --ground-bottom: #2b2b2b;
+
+        --bike-frame: #7ab0ff;
+        --bike-frame-dark: #3a78e6;
+        --wheel-rim: #e7e7e7;
+        --wheel-hub: #a8a8a8;
+        --spokes: #b9c3cc;
+
+        --pelican-body: #cfd8df;
+        --pelican-body-light: #e5ecf1;
+        --pelican-outline: #9fb0bc;
+        --beak: #ffb142;
+        --beak-edge: #d27a1e;
+        --leg: #e6a526;
+        --leg-edge: #ad7420;
+        --seat: #e5e5e5;
+        --metal: #cfd4d8;
+        --shadow: rgba(0,0,0,0.35);
+      }
+    }
+
+    /* Super-light variant without gradients */
+    [data-variant="light"] {
+      --bg-sky: none;
+      --bg-road: none;
+      --frame-stroke: var(--bike-frame);
+    }
+
+    /* Background toggle */
+    #bg { display: none; }
+    [data-background="simple"] #bg { display: block; }
+
+    /* Animation (CSS) */
+    [data-animated="true"] #wheel-left,
+    [data-animated="true"] #wheel-right {
+      animation: spin 2s linear infinite;
+      transform-origin: center;
+    }
+    [data-animated="true"] #pelican {
+      animation: bob 2s ease-in-out infinite;
+      transform-origin: 320px 260px; /* around pelican mass center */
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      [data-animated="true"] #wheel-left,
+      [data-animated="true"] #wheel-right,
+      [data-animated="true"] #pelican {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <defs>
+    <!-- Gradients used in default variant only -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--sky-top)"/>
+      <stop offset="100%" stop-color="var(--sky-bottom)"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--ground-top)"/>
+      <stop offset="100%" stop-color="var(--ground-bottom)"/>
+    </linearGradient>
+    <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--bike-frame)"/>
+      <stop offset="100%" stop-color="var(--bike-frame-dark)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Optional simple background -->
+  <g id="bg" role="group" aria-label="Background">
+    <rect x="0" y="0" width="640" height="380" fill="var(--bg-sky)" aria-hidden="true"/>
+    <rect x="0" y="380" width="640" height="100" fill="var(--bg-road)" aria-hidden="true"/>
+  </g>
+
+  <!-- Bicycle -->
+  <g id="bike" role="group" aria-label="Bicycle">
+    <!-- Rear wheel (transform-origin center; animated spin) -->
+    <g id="wheel-left" transform="translate(230,355)">
+      <circle r="64" fill="none" stroke="var(--wheel-rim)" stroke-width="6"/>
+      <circle r="8" fill="var(--wheel-hub)"/>
+      <g stroke="var(--spokes)" stroke-width="2" opacity="0.9">
+        <line x1="0" y1="-52" x2="0" y2="52"/>
+        <line x1="-52" y1="0" x2="52" y2="0"/>
+        <line x1="-36" y1="-36" x2="36" y2="36"/>
+        <line x1="-36" y1="36" x2="36" y2="-36"/>
+      </g>
+      <!-- SMIL fallback: rotate -->
+      <animateTransform attributeName="transform" attributeType="XML"
+        type="rotate" from="0 0 0" to="360 0 0" dur="2s" repeatCount="indefinite"
+        begin="svg.data-animated.true;indefinite" />
+    </g>
+
+    <!-- Front wheel -->
+    <g id="wheel-right" transform="translate(430,355)">
+      <circle r="64" fill="none" stroke="var(--wheel-rim)" stroke-width="6"/>
+      <circle r="8" fill="var(--wheel-hub)"/>
+      <g stroke="var(--spokes)" stroke-width="2" opacity="0.9">
+        <line x1="0" y1="-52" x2="0" y2="52"/>
+        <line x1="-52" y1="0" x2="52" y2="0"/>
+        <line x1="-36" y1="-36" x2="36" y2="36"/>
+        <line x1="-36" y1="36" x2="36" y2="-36"/>
+      </g>
+      <animateTransform attributeName="transform" attributeType="XML"
+        type="rotate" from="0 0 0" to="360 0 0" dur="2s" repeatCount="indefinite"
+        begin="svg.data-animated.true;indefinite" />
+    </g>
+
+    <!-- Frame (stroke may be gradient or flat via --frame-stroke) -->
+    <g stroke="var(--frame-stroke)" stroke-width="9" stroke-linecap="round" fill="none">
+      <line x1="230" y1="355" x2="310" y2="300"/>
+      <line x1="310" y1="300" x2="430" y2="355"/>
+      <line x1="230" y1="355" x2="370" y2="355"/>
+      <line x1="310" y1="300" x2="340" y2="255"/>
+      <line x1="340" y1="255" x2="400" y2="255"/>
+      <line x1="400" y1="255" x2="430" y2="355"/>
+    </g>
+
+    <!-- Seatpost + saddle -->
+    <line x1="340" y1="255" x2="330" y2="235" stroke="var(--bike-frame-dark)" stroke-width="6" stroke-linecap="round"/>
+    <rect x="318" y="225" width="50" height="16" rx="8" fill="var(--seat)"/>
+
+    <!-- Crankset + pedals -->
+    <g transform="translate(310,300)">
+      <circle r="16" fill="#2b2b2b"/>
+      <line x1="0" y1="0" x2="24" y2="0" stroke="var(--metal)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="0" y1="0" x2="-24" y2="0" stroke="var(--metal)" stroke-width="3" stroke-linecap="round"/>
+      <rect x="24" y="-4" width="22" height="8" rx="3" fill="#1f1f1f"/>
+      <rect x="-46" y="-4" width="22" height="8" rx="3" fill="#1f1f1f"/>
+    </g>
+
+    <!-- Chain (simplified) -->
+    <g stroke="#666" stroke-width="3" opacity="0.9">
+      <line x1="230" y1="355" x2="310" y2="300"/>
+      <line x1="310" y1="300" x2="370" y2="355"/>
+    </g>
+
+    <!-- Handlebar set with grips for clear contact -->
+    <!-- Stem -->
+    <line x1="400" y1="255" x2="412" y2="242" stroke="var(--bike-frame-dark)" stroke-width="6" stroke-linecap="round"/>
+    <!-- Bar -->
+    <path d="M412,242 C430,238 454,238 472,242" fill="none" stroke="var(--metal)" stroke-width="6" stroke-linecap="round"/>
+    <!-- Grips -->
+    <rect x="468" y="236" width="12" height="12" rx="3" fill="#333"/>
+    <rect x="406" y="236" width="12" height="12" rx="3" fill="#333"/>
+  </g>
+
+  <!-- Pelican -->
+  <!-- Transform-origin noted for bob animation: approx (320,260) -->
+  <g id="pelican" role="group" aria-label="Pelican rider">
+    <!-- Tail (simplified curve) -->
+    <path d="M242,258 C226,248 222,232 235,226 C251,222 265,232 268,240 C260,250 252,256 242,258 Z"
+          fill="#dfe8ef" aria-hidden="true"/>
+
+    <!-- Body -->
+    <ellipse cx="300" cy="260" rx="88" ry="56"
+      fill="var(--pelican-body)" stroke="var(--pelican-outline)" stroke-width="2"/>
+
+    <!-- Wing -->
+    <path d="M320,246 C345,234 378,240 394,252 C380,256 364,266 350,278 C340,286 332,294 326,298 C324,279 322,261 320,246 Z"
+      fill="var(--pelican-body-light)" stroke="var(--pelican-outline)" stroke-width="2"/>
+
+    <!-- Neck -->
+    <path d="M330,242 C355,212 394,202 417,216 C400,215 370,232 363,252 C354,247 343,244 330,242 Z"
+      fill="var(--pelican-body)" stroke="var(--pelican-outline)" stroke-width="2"/>
+
+    <!-- Head -->
+    <ellipse cx="426" cy="218" rx="26" ry="22"
+      fill="var(--pelican-body-light)" stroke="var(--pelican-outline)" stroke-width="2"/>
+
+    <!-- Eye -->
+    <circle cx="432" cy="214" r="5" fill="#1b1b1b"/>
+    <circle cx="433.4" cy="212.8" r="1.6" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Beak (simplified upper/lower) -->
+    <path d="M440,220 C470,214 500,214 514,220 C496,228 465,231 444,228 Z"
+      fill="var(--beak)" stroke="var(--beak-edge)" stroke-width="2"/>
+    <path d="M444,228 C468,236 498,234 514,224 C512,236 488,244 458,240 C450,239 446,234 444,228 Z"
+      fill="var(--beak)" stroke="var(--beak-edge)" stroke-width="2" opacity="0.97"/>
+
+    <!-- Legs -->
+    <path d="M286,304 C276,326 272,344 274,360 L288,360 C289,346 291,333 298,318 Z"
+      fill="var(--leg)" stroke="var(--leg-edge)" stroke-width="2"/>
+    <path d="M318,305 C314,325 314,343 318,360 L332,360 C330,342 328,327 334,310 Z"
+      fill="var(--leg)" stroke="var(--leg-edge)" stroke-width="2"/>
+
+    <!-- Feet -->
+    <path d="M270,360 C266,370 275,378 292,380 C288,372 288,366 286,360 Z"
+      fill="#e4932f" stroke="var(--leg-edge)" stroke-width="2"/>
+    <path d="M318,360 C320,370 330,378 348,380 C342,372 340,366 332,360 Z"
+      fill="#e4932f" stroke="var(--leg-edge)" stroke-width="2"/>
+
+    <!-- Wing/arm reaching handlebars with explicit contact at grips -->
+    <!-- Left grip contact (near x=412) -->
+    <path d="M360,266 C378,260 396,260 412,242 C414,240 420,240 422,242 C404,258 388,268 372,270 C366,270 362,268 360,266 Z"
+      fill="var(--pelican-body)" stroke="var(--pelican-outline)" stroke-width="2"/>
+    <!-- Right grip contact (near x=474) -->
+    <path d="M376,268 C404,264 434,254 472,242 C476,242 478,244 480,248 C456,258 430,270 396,276 C386,274 380,271 376,268 Z"
+      fill="var(--pelican-body)" stroke="var(--pelican-outline)" stroke-width="2"/>
+
+    <!-- SMIL fallback: vertical bob -->
+    <animateTransform attributeName="transform" attributeType="XML"
+      type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"
+      begin="svg.data-animated.true;indefinite"/>
+  </g>
+
+  <!-- Ground shadow -->
+  <ellipse cx="330" cy="382" rx="180" ry="18" fill="var(--shadow)" aria-hidden="true"/>
+</svg>
+
+Usage:
+- Toggle animation: set data-animated="true" on the root svg.
+- Toggle background: set data-background="simple".
+- Dark mode: data-theme="dark" for forced dark, data-theme="light" for light, or data-theme="auto" to follow system.
+- Super-light variant: set data-variant="light" to avoid gradients; combine with data-background="none" for minimal size.

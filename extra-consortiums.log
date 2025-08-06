@@ -1,0 +1,6 @@
+Consortium configuration 'consortium-horizon-beta-gpt-oss-20b-parasail' saved.
+You can now use it like: llm -m consortium-horizon-beta-gpt-oss-20b-parasail "Your prompt here"
+Consortium configuration 'horizons-i2' saved.
+You can now use it like: llm -m horizons-i2 "Your prompt here"
+Consortium configuration 'horizons-i2-pick1' saved.
+You can now use it like: llm -m horizons-i2-pick1 "Your prompt here"

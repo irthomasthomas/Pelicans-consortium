@@ -1,3 +1,6 @@
 [2025-08-06 02:54:34] Processing model: horizon-beta
 [2025-08-06 02:54:34] Attempt 1: llm -m horizon-beta Generate an SVG of a pelican riding a bicycle -x > solo-horizon-beta.svg
 [2025-08-06 02:55:03] Attempt 1: llm -m consortium-horizon-beta Generate an SVG of a pelican riding a bicycle -x > consortium-horizon-beta.svg
+[2025-08-06 02:57:05] Attempt 1: llm -m consortium-horizon-beta-gpt-oss-20b-parasail Generate an SVG of a pelican riding a bicycle -x > consortium-horizon-beta-gpt-oss-20b-parasail.svg
+[2025-08-06 02:58:37] Attempt 1: llm -m horizons-i2 Generate an SVG of a pelican riding a bicycle -x > consortium-horizons-i2.svg
+[2025-08-06 03:05:26] Attempt 1: llm -m horizons-i2-pick1 Generate an SVG of a pelican riding a bicycle -x > consortium-horizons-i2-pick1.svg

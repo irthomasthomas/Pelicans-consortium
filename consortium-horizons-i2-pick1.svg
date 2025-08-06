@@ -1,234 +1,243 @@
 <problem_breakdown>
-- Patterns or trends across iterations:
-  - The previous synthesis already delivered a complete, accessible SVG featuring a pelican riding a bicycle, with gradients, filters, and a composed scene (sky, road, bicycle, pelican, motion lines, caption).
-  - The SVG is relatively detailed and visually cohesive but could be optimized for size, accessibility, and maintainability. It uses filters and multiple gradients which can increase render cost. Some shapes and groups are decorative and not essential.
-  - No explicit refinement areas were provided in this iteration, so likely improvement opportunities include: simplifying/optimizing the SVG, enhancing accessibility and responsiveness, clarifying layering, and making the pelican–bicycle interaction more readable.
+- Patterns/trends across iterations:
+  - The previous SVG already fulfills the prompt: a pelican riding a bicycle with a background, shadows, gradients, and decent detail.
+  - No explicit refinement areas were provided in this iteration. However, common refinement axes for SVGs include: accessibility (titles/desc), scalability (responsive viewBox without fixed width/height), reduced complexity/size, animation (to convey motion), semantic/grouping/ids, and stylistic polish (color harmony, consistent strokes).
 
-- Potential approaches to address each implicit refinement area:
-  1) Performance/size optimization:
-     - Remove redundant shapes or merges, reduce path complexity where feasible.
-     - Replace repeated spoke lines with a simple radial pattern using rotate transforms.
-     - Limit filter area and reduce blur where possible; provide a no-filter fallback via a class toggle.
-     - Convert some fills to flat colors if gradients are not crucial.
-  2) Accessibility:
-     - Add title/desc elements with unique IDs linked via aria-labelledby.
-     - Mark decorative groups as aria-hidden where appropriate.
-     - Ensure sufficient contrast for key elements.
-  3) Responsiveness/embedding:
-     - Use viewBox and remove fixed width/height, rely on width="100%" height="auto".
-     - Keep all coordinates in a consistent coordinate system to preserve scaling.
-  4) Maintainability/structure:
-     - Group logical parts with ids and minimal inline styles; use shared classes.
-     - Use CSS in a <style> block for colors where appropriate.
-  5) Visual clarity of “pelican riding a bicycle”:
-     - Ensure feet visibly connect to pedals; adjust leg geometry.
-     - Slightly rotate crank/handlebars to suggest motion/control.
-     - Add minimal motion blur lines on wheels.
-     - Slightly adjust seat/pelican positioning to read as sitting.
+- Potential approaches to address typical refinement areas:
+  - Accessibility: Add <title> and <desc>, label key groups with aria-label or role where applicable.
+  - Responsiveness: Prefer viewBox with width/height set to 100% or remove fixed pixel sizes; use vector units; ensure composition looks good across sizes.
+  - Reusability/cleanliness: Factor repetitive parts into <defs> with <use>, reduce unnecessary strokes, consolidate gradients, simplify paths where possible.
+  - Animation: Add simple CSS/SMIL animations for wheel rotation and slight bobbing to imply motion.
+  - Performance: Reduce filters and heavy blurs; constrain filter regions; keep stroke counts modest; avoid huge opacities over large areas.
+  - Style cohesion: Harmonize palette, adjust contrasts, ensure pelican stands out, refine beak/eye details.
+  - Metadata: Add metadata and license hints if desired.
 
 - Detailed analysis:
-  The prior SVG is attractive but includes multiple decorative ellipses for shadows and clouds, plus a global shadow filter. We can keep the illustrative quality while reducing complexity: fewer cloud shapes, simpler wheel spoke generation, smaller filter regions, and a single subtle drop shadow under the bicycle/pelican group. Accessibility can be improved by adding <title> and <desc>, using aria-labelledby, and marking decorative elements as aria-hidden. Responsiveness is improved by using viewBox and percentage sizing. For visual clarity, we’ll align feet with pedal circles and adjust leg paths to terminate precisely on pedal positions, rotate the crank arms, and add subtle wheel motion strokes. We’ll also ensure that gradients remain but are fewer/simpler to balance aesthetics and performance.
+  - The prior SVG is visually rich but static; wheels have spokes drawn with multiple lines and there’s a shadow filter applied to large groups, which can be heavy.
+  - It uses fixed width/height (800x600) alongside a viewBox, making it non-fluid.
+  - No <title> or <desc> for accessibility, and groups lack labels.
+  - Motion lines exist, but an animated bike/pelican would better convey “riding.”
+  - Some elements could be defined once and reused (wheel, spoke patterns).
+  - Filter region is oversized (-20% to 140%), which may cause unnecessary rendering cost.
+  - The design is already coherent; improvements should avoid major visual regressions.
+
+  Proposed refinements in the updated SVG:
+  - Accessibility: Add <title>, <desc>, and aria-labels for major groups.
+  - Responsiveness: Use viewBox with width="100%" height="100%" and preserveAspectRatio to fit different containers.
+  - Reuse: Define a wheel symbol and reuse for front/rear; define gradients in defs as before; constrain filters.
+  - Animation: Rotate wheels; small crank rotation; subtle up-down bob of pelican; slight road parallax lines.
+  - Performance: Simplify spoke drawing using a loop-like structure via a set of <line> rotated with <g> transforms; reduce filter stdDeviation and region.
+  - Style: Keep original palette, minor tweaks to contrast and consistent strokes.
+
 </problem_breakdown>
 
 <updated_response>
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Pelican riding a bicycle</title>
-  <desc id="desc">An illustrated pelican seated on a bicycle, pedaling with webbed feet, set against a sky and road background with subtle motion accents.</desc>
+Addressed refinement areas:
+- Accessibility: Added <title>, <desc>, and aria-labels to main groups.
+- Responsiveness: Made SVG scalable with width/height 100% and preserveAspectRatio; layout remains within viewBox.
+- Reuse/Cleanliness: Introduced <symbol> for wheel; reused via <use>; reduced repeated lines.
+- Animation: Added rotation of wheels and crank; slight vertical bob of pelican; gentle motion lines animation.
+- Performance: Tightened filter bounds and stdDeviation; reduced duplicate strokes; limited opacity areas.
 
-  <style>
-    .decorative { pointer-events: none; }
-    .shadow { filter: url(#shadowSmall); }
-    .stroke-soft { stroke-linecap: round; stroke-linejoin: round; }
-    .muted { opacity: 0.85; }
-  </style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pelican riding a bicycle</title>
+  <desc id="desc">An SVG illustration of a pelican riding a blue bicycle on a road beneath a soft sky, with animated wheel rotation and a gentle bobbing motion.</desc>
 
   <defs>
-    <!-- Simplified gradients -->
-    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#8fd3ff"/>
-      <stop offset="100%" stop-color="#d9f1ff"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b7e3ff"/>
+      <stop offset="100%" stop-color="#e9f7ff"/>
     </linearGradient>
-    <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#959ca2"/>
-      <stop offset="100%" stop-color="#6f767c"/>
-    </linearGradient>
-    <radialGradient id="tireGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#3a3a3a"/>
-      <stop offset="100%" stop-color="#151515"/>
-    </radialGradient>
-    <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#2d7cff"/>
-      <stop offset="100%" stop-color="#1446a0"/>
-    </linearGradient>
-    <linearGradient id="beakGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ffb03b"/>
-      <stop offset="100%" stop-color="#ff7a00"/>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5e5e66"/>
+      <stop offset="100%" stop-color="#44444c"/>
     </linearGradient>
 
-    <!-- Smaller, bounded shadow filter for performance -->
-    <filter id="shadowSmall" x="-15%" y="-15%" width="130%" height="140%">
+    <!-- Lighter, tighter shadow filter -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dy="2"/>
-      <feComponentTransfer>
-        <feFuncA type="linear" slope="0.3"/>
-      </feComponentTransfer>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
       <feMerge>
-        <feMergeNode/>
+        <feMergeNode in="offsetblur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- Spoke pattern via rotation to reduce lines -->
-    <g id="spokes" stroke="#96a0a8" stroke-width="2">
-      <!-- 10 spokes rotated -->
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(0)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(36)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(72)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(108)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(144)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(180)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(216)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(252)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(288)"/>
-      <line x1="0" y1="0" x2="0" y2="-58" transform="rotate(324)"/>
+    <!-- Reusable spokes group -->
+    <g id="spokes" stroke="#7a7a82" stroke-width="2">
+      <line x1="0" y1="0" x2="60" y2="0"/>
+      <g transform="rotate(45)">
+        <line x1="0" y1="0" x2="60" y2="0"/>
+      </g>
+      <g transform="rotate(90)">
+        <line x1="0" y1="0" x2="60" y2="0"/>
+      </g>
+      <g transform="rotate(135)">
+        <line x1="0" y1="0" x2="60" y2="0"/>
+      </g>
     </g>
+
+    <!-- Wheel symbol -->
+    <symbol id="wheel" viewBox="-70 -70 140 140">
+      <circle r="70" fill="#1f1f25"/>
+      <circle r="62" fill="#2b2b33"/>
+      <circle r="60" fill="#f8f9fb"/>
+      <use href="#spokes"/>
+      <circle r="6" fill="#4c4c54"/>
+      <circle r="70" fill="none" stroke="#111" stroke-width="4"/>
+    </symbol>
+
+    <style>
+      /* Subtle animation timings */
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes bob {
+        0%,100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+      }
+      @keyframes drift {
+        0% { transform: translateX(0); opacity: 0.5; }
+        100% { transform: translateX(80px); opacity: 0; }
+      }
+    </style>
   </defs>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="url(#skyGrad)"/>
-  <g class="decorative" aria-hidden="true" opacity="0.9">
-    <ellipse cx="120" cy="90" rx="60" ry="28" fill="#ffffff"/>
-    <ellipse cx="600" cy="110" rx="90" ry="40" fill="#ffffff" opacity="0.9"/>
+  <rect width="100%" height="70%" fill="url(#sky)"/>
+  <rect y="70%" width="100%" height="30%" fill="url(#road)"/>
+  <g opacity="0.2" aria-label="clouds">
+    <circle cx="120" cy="120" r="60" fill="#fff"/>
+    <circle cx="160" cy="120" r="60" fill="#fff"/>
+    <circle cx="140" cy="100" r="60" fill="#fff"/>
   </g>
 
-  <!-- Ground -->
-  <rect y="430" width="100%" height="170" fill="url(#roadGrad)"/>
-  <rect y="420" width="100%" height="10" fill="#5b635f"/>
+  <!-- Bike shadow -->
+  <ellipse cx="400" cy="450" rx="220" ry="30" fill="#000" opacity="0.12"/>
 
-  <!-- Bicycle + Pelican group for unified shadow -->
-  <g class="shadow">
+  <!-- Bicycle and pelican group for shared bobbing -->
+  <g id="sceneContent" style="animation: bob 2.5s ease-in-out infinite" aria-label="pelican riding bicycle">
     <!-- Bicycle -->
-    <g id="bicycle" transform="translate(120, 310)">
-      <!-- Wheels -->
-      <g id="rearWheel" transform="translate(120,120)">
-        <circle r="68" fill="url(#tireGrad)"/>
-        <circle r="58" fill="#f5f7fa" stroke="#555" stroke-width="2"/>
-        <g transform="translate(0,0)"><use href="#spokes"/></g>
-        <circle r="6" fill="#999"/>
-      </g>
-      <g id="frontWheel" transform="translate(460,120)">
-        <circle r="68" fill="url(#tireGrad)"/>
-        <circle r="58" fill="#f5f7fa" stroke="#555" stroke-width="2"/>
-        <g transform="translate(0,0)"><use href="#spokes"/></g>
-        <circle r="6" fill="#999"/>
-      </g>
-
-      <!-- Frame -->
-      <g id="frame" class="stroke-soft" stroke="url(#frameGrad)" stroke-width="10" fill="none">
-        <line x1="180" y1="120" x2="300" y2="40"/>
-        <line x1="180" y1="120" x2="360" y2="120"/>
-        <line x1="300" y1="40" x2="360" y2="120"/>
-        <line x1="300" y1="40" x2="300" y2="-10"/>
-        <line x1="360" y1="120" x2="455" y2="40"/>
-        <line x1="455" y1="40" x2="460" y2="10"/>
-      </g>
-
-      <!-- Seat and post -->
-      <g>
-        <line x1="270" y1="60" x2="250" y2="10" stroke="#444" stroke-width="8" stroke-linecap="round"/>
-        <rect x="220" y="-10" rx="8" ry="8" width="70" height="22" fill="#222"/>
-      </g>
-
-      <!-- Crank and pedals (rotated for motion cue) -->
-      <g id="crank" transform="translate(270,120) rotate(-25)">
-        <circle r="14" fill="#666"/>
-        <line x1="-28" y1="-10" x2="-50" y2="-20" stroke="#555" stroke-width="6" stroke-linecap="round"/>
-        <circle id="leftPedal" cx="-56" cy="-22" r="8" fill="#222"/>
-        <line x1="28" y1="10" x2="50" y2="20" stroke="#555" stroke-width="6" stroke-linecap="round"/>
-        <circle id="rightPedal" cx="56" cy="22" r="8" fill="#222"/>
-        <g stroke="#444" stroke-width="4">
-          <line x1="-90" y1="0" x2="-14" y2="0"/>
-          <line x1="14" y1="0" x2="90" y2="0"/>
+    <g id="bicycle" transform="translate(200,280)" filter="url(#shadow)">
+      <!-- Rear wheel -->
+      <g transform="translate(20,120)">
+        <g style="transform-origin: 0px 0px; animation: spin 1.4s linear infinite;">
+          <use href="#wheel"/>
         </g>
       </g>
 
-      <!-- Handlebars with slight tilt -->
-      <g stroke="#444" stroke-width="8" stroke-linecap="round" fill="none" transform="translate(0,0)">
-        <line x1="460" y1="10" x2="482" y2="-48"/>
-        <path d="M482 -48 C 502 -68, 520 -68, 538 -50"/>
-        <circle cx="538" cy="-50" r="6" fill="#333"/>
-        <circle cx="500" cy="-58" r="6" fill="#333"/>
+      <!-- Front wheel -->
+      <g transform="translate(360,120)">
+        <g style="transform-origin: 0px 0px; animation: spin 1.4s linear infinite;">
+          <use href="#wheel"/>
+        </g>
+      </g>
+
+      <!-- Frame -->
+      <g id="frame" stroke="#2a6ed0" stroke-width="9" fill="none">
+        <line x1="20" y1="120" x2="150" y2="40"/>
+        <line x1="150" y1="40" x2="240" y2="120"/>
+        <line x1="20" y1="120" x2="240" y2="120"/>
+        <line x1="150" y1="40" x2="180" y2="-10"/>
+        <line x1="240" y1="120" x2="360" y2="120"/>
+      </g>
+
+      <!-- Seat tube and seat -->
+      <line x1="150" y1="40" x2="120" y2="-10" stroke="#2a6ed0" stroke-width="9"/>
+      <rect x="95" y="-28" width="60" height="18" rx="9" fill="#333"/>
+
+      <!-- Handlebars -->
+      <g stroke="#333" stroke-width="9" fill="none">
+        <line x1="180" y1="-10" x2="220" y2="-40"/>
+        <path d="M220,-40 C240,-55 260,-55 280,-40" />
+        <line x1="280" y1="-40" x2="300" y2="-20"/>
+      </g>
+      <g fill="#444">
+        <circle cx="180" cy="-10" r="6"/>
+        <circle cx="220" cy="-40" r="5"/>
+        <circle cx="280" cy="-40" r="5"/>
+        <circle cx="300" cy="-20" r="5"/>
+      </g>
+
+      <!-- Crank and pedals -->
+      <g transform="translate(150,120)" style="transform-origin: 150px 120px; animation: spin 1.4s linear infinite;">
+        <circle r="10" fill="#555"/>
+        <line x1="0" y1="0" x2="-26" y2="20" stroke="#444" stroke-width="6"/>
+        <line x1="0" y1="0" x2="26" y2="-20" stroke="#444" stroke-width="6"/>
+        <rect x="-36" y="16" width="18" height="8" rx="3" fill="#222"/>
+        <rect x="18" y="-24" width="18" height="8" rx="3" fill="#222"/>
+      </g>
+
+      <!-- Chain -->
+      <g stroke="#666" stroke-width="3">
+        <line x1="150" y1="120" x2="240" y2="120"/>
+        <line x1="150" y1="120" x2="20" y2="120"/>
       </g>
     </g>
 
     <!-- Pelican -->
-    <g id="pelican" transform="translate(260, 188)">
+    <g id="pelican" transform="translate(270,150)" filter="url(#shadow)" aria-label="pelican">
       <!-- Body -->
-      <ellipse cx="120" cy="120" rx="110" ry="70" fill="#f2f5f7" stroke="#cfd6da" stroke-width="2"/>
+      <ellipse cx="140" cy="160" rx="110" ry="70" fill="#f1f5f7" stroke="#cfd8dc" stroke-width="2"/>
       <!-- Wing -->
-      <path d="M80,120 C60,150 60,180 120,185 C180,190 210,165 190,130 C170,95 120,95 80,120 Z"
-            fill="#e6ecef" stroke="#c4cdd3" stroke-width="2"/>
+      <path d="M80,150 C60,180 60,220 110,230 C160,240 210,220 200,180 C190,140 120,130 80,150 Z"
+            fill="#e2e8eb" stroke="#c7d0d4" stroke-width="2"/>
       <!-- Tail -->
-      <path d="M15,120 C-8,112 -18,98 -22,84 C-3,92 10,94 30,98"
-            fill="#e6ecef" stroke="#c4cdd3" stroke-width="2"/>
+      <path d="M45,175 L15,165 L10,175 L40,195 Z" fill="#dfe6ea" stroke="#c7d0d4" stroke-width="2"/>
+
       <!-- Neck -->
-      <path d="M170,120 C190,90 205,70 210,55 C220,30 210,10 190,8 C170,6 150,30 148,56 C147,75 155,95 170,120 Z"
-            fill="#f7fafc" stroke="#cfd6da" stroke-width="2"/>
+      <path d="M200,150 C240,130 250,90 230,70 C215,55 185,60 170,80 C155,100 160,140 180,155 Z"
+            fill="#f1f5f7" stroke="#cfd8dc" stroke-width="2"/>
+
       <!-- Head -->
-      <ellipse cx="192" cy="40" rx="34" ry="28" fill="#f7fafc" stroke="#cfd6da" stroke-width="2"/>
+      <ellipse cx="232" cy="66" rx="36" ry="28" fill="#f1f5f7" stroke="#cfd8dc" stroke-width="2"/>
+
       <!-- Eye -->
-      <circle cx="205" cy="38" r="4.5" fill="#222"/>
-      <circle cx="205" cy="38" r="1.5" fill="#fff" opacity="0.8"/>
+      <circle cx="242" cy="62" r="6" fill="#222"/>
+      <circle cx="244" cy="60" r="2" fill="#fff"/>
+
       <!-- Beak -->
-      <path d="M208,44 C235,52 270,56 292,50 C270,40 240,28 210,22 Z"
-            fill="url(#beakGrad)" stroke="#e07a00" stroke-width="2"/>
-      <!-- Gular pouch -->
-      <path d="M210,44 C240,70 265,76 288,60 C265,62 240,58 208,44 Z"
-            fill="#ffcf6a" opacity="0.85" stroke="#f0a641" stroke-width="1.5"/>
+      <path d="M250,70 C300,60 340,70 360,80 C342,86 320,92 300,92 C280,92 260,86 250,70 Z"
+            fill="#f4b000" stroke="#d99800" stroke-width="2"/>
+      <path d="M248,75 C270,90 290,96 302,96 C318,96 342,90 360,82 C352,98 322,112 300,112 C276,112 254,98 248,75 Z"
+            fill="#ffcf3d" stroke="#d99800" stroke-width="2"/>
 
-      <!-- Seat contact -->
-      <ellipse cx="210" cy="155" rx="30" ry="18" fill="#e9eff2" stroke="#cfd6da" stroke-width="2"/>
+      <!-- Legs and feet -->
+      <g aria-label="left leg">
+        <path d="M150,210 C140,230 130,250 120,265" stroke="#f4b000" stroke-width="10" fill="none"/>
+        <path d="M120,265 L106,270 L112,256 Z" fill="#f4b000"/>
+        <rect x="92" y="260" width="28" height="10" rx="4" transform="rotate(-20 106 265)" fill="#222"/>
+      </g>
 
-      <!-- Legs and feet precisely to pedals (compute to crank rotation) -->
-      <!-- Right pedal world coords: bicycle(120,310)+crank(270,120)+rotate(-25)(56,22) -->
-      <!-- Precomputed approximate point: (120+270+52.9, 310+120+ -2.6) => (442.9, 427.4) but drawn relative here; we align visually instead -->
-      <!-- Rear leg to left pedal -->
-      <g fill="#ffb03b" stroke="#d28121" stroke-width="2">
-        <path d="M160,178 C150,200 150,210 160,225 L195,210"/>
-        <!-- Front leg to right pedal adjusted -->
-        <path d="M200,170 C198,190 205,205 220,218 L248,208"/>
+      <g aria-label="right leg">
+        <path d="M170,205 C180,230 195,240 210,245" stroke="#f4b000" stroke-width="10" fill="none"/>
+        <path d="M210,245 L222,250 L210,258 Z" fill="#f4b000"/>
+        <rect x="206" y="245" width="28" height="10" rx="4" transform="rotate(15 220 250)" fill="#222"/>
       </g>
-      <g fill="#ff9c2a" stroke="#cb731d" stroke-width="1.5">
-        <path d="M248,208 C258,208 270,212 274,216 C266,218 256,220 246,216 Z"/>
-        <path d="M195,210 C205,210 215,212 220,216 C210,220 200,220 190,216 Z"/>
-      </g>
+
+      <!-- Chest pouch hint -->
+      <path d="M200,150 C210,160 210,178 198,188 C188,196 170,198 160,190"
+            fill="none" stroke="#d2dbe0" stroke-width="3"/>
+
+      <!-- Saddle interaction -->
+      <ellipse cx="130" cy="138" rx="22" ry="12" fill="#dfe6ea" opacity="0.8"/>
+
+      <!-- Beak stripe -->
+      <path d="M250,72 C310,62 325,76 345,82" stroke="#e59b00" stroke-width="4" fill="none"/>
     </g>
   </g>
 
-  <!-- Wheel motion accents (lighter, minimal) -->
-  <g class="decorative" aria-hidden="true" opacity="0.18" stroke="#000" stroke-width="4" stroke-linecap="round">
-    <path d="M180,460 q-30,-10 -60,0"/>
-    <path d="M620,460 q30,-10 60,0"/>
-    <path d="M680,330 q20,-10 40,0"/>
+  <!-- Motion lines with drifting animation -->
+  <g stroke="#ffffff" stroke-width="3" opacity="0.5" aria-label="motion lines">
+    <line x1="80" y1="420" x2="150" y2="420" style="animation: drift 1.2s linear infinite;"/>
+    <line x1="90" y1="440" x2="160" y2="440" style="animation: drift 1.2s 0.2s linear infinite;"/>
+    <line x1="70" y1="400" x2="140" y2="400" style="animation: drift 1.2s 0.1s linear infinite;"/>
   </g>
-
-  <!-- Caption -->
-  <g font-family="Verdana, Geneva, sans-serif" font-size="22" fill="#2b3a42" class="muted">
-    <text x="400" y="560" text-anchor="middle">Pelican on the move</text>
-  </g>
-
-  <!-- Responsiveness: rely on viewBox; consumer sets CSS width/height -->
 </svg>
-
-Refinement areas addressed:
-- Performance/size optimization: Reduced cloud count; replaced many individual spoke lines with a reusable rotated spoke group; tightened and simplified the shadow filter region and blur; kept gradients minimal and reused; removed some extra shadow ellipses.
-- Accessibility: Added title and desc with aria-labelledby; marked purely decorative groups with aria-hidden and a decorative class; maintained good contrast on key elements.
-- Responsiveness/embedding: Removed fixed width/height; relied on viewBox so it scales with CSS (e.g., width: 100%; height: auto).
-- Maintainability/structure: Introduced a style block with shared classes; grouped spokes into a reusable definition; clearer ids and grouping; reduced inline style clutter.
-- Visual clarity of “riding”: Rotated crank for motion; aligned legs/feet more closely to pedal positions; slightly tilted handlebars; retained motion accents for a sense of movement; ensured seat–body overlap reads as sitting.
 </updated_response>
 
 <confidence>
-0.91
+0.86
 </confidence>
