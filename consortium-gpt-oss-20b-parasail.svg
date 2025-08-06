@@ -1,0 +1,61 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="400"
+    height="250"
+    viewBox="0 0 400 250"
+    role="img"
+    aria-labelledby="title"
+>
+  <title id="title">Pelican Riding a Bicycle</title>
+
+  <!-- Bicycle -->
+  <!-- Wheels -->
+  <circle cx="120" cy="180" r="30" fill="#e0e0e0" stroke="#555" stroke-width="2"/>
+  <circle cx="280" cy="180" r="30" fill="#e0e0e0" stroke="#555" stroke-width="2"/>
+
+  <!-- Spokes (optional detail) -->
+  <g stroke="#555" stroke-width="1">
+    <line x1="120" y1="180" x2="85"      y2="150"/>
+    <line x1="120" y1="180" x2="85"      y2="210"/>
+    <line x1="280" y1="180" x2="250"    y2="150"/>
+    <line x1="280" y1="180" x2="250"    y2="210"/>
+  </g>
+
+  <!-- Frame -->
+  <path d="M120 180 L190 120 L280 180" stroke="#555" stroke-width="4" fill="none"/>
+  <!-- Bottom tube -->
+  <path d="M190 120 L165 140" stroke="#555" stroke-width="4" fill="none"/>
+  <!-- Seat -->
+  <circle cx="190" cy="120" r="4" fill="#555" stroke="none"/>
+
+  <!-- Handlebars -->
+  <path d="M280 180 L320 140 L350 140" stroke="#555" stroke-width="4" fill="none"/>
+
+  <!-- Chain -->
+  <line x1="165" y1="140" x2="200" y2="170" stroke="#555" stroke-width="3"/>
+
+  <!-- Pelican -->
+  <!-- Body -->
+  <ellipse cx="190" cy="120" rx="20" ry="15" fill="#90c0f4" stroke="#4477aa" stroke-width="2"/>
+  <!-- Tail feather -->
+  <path d="M170 125 L155 150" stroke="#4477aa" stroke-width="2"/>
+
+  <!-- Head -->
+  <circle cx="170" cy="95" r="10" fill="#90c0f4" stroke="#4477aa" stroke-width="2"/>
+  <!-- Eye -->
+  <circle cx="172" cy="92" r="2" fill="#333"/>
+
+  <!-- Beak -->
+  <polygon points="165,96 170,100 165,104" fill="#ffcc66" stroke="#aa6633" stroke-width="1"/>
+
+  <!-- Wings (one grips handlebars) -->
+  <path d="M180 115 Q185 100 190 115" stroke="#4477aa" stroke-width="2" fill="none"/>
+
+  <!-- Legs -->
+  <line x1="185" y1="135" x2="185" y2="150" stroke="black" stroke-width="2"/>
+  <line x1="195" y1="135" x2="195" y2="150" stroke="black" stroke-width="2"/>
+  <!-- Feet -->
+  <polygon points="180,150 175,160 185,160" fill="red"/>
+  <polygon points="195,150 190,160 200,160" fill="red"/>
+</svg>
+
